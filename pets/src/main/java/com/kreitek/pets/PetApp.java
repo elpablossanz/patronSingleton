@@ -3,12 +3,17 @@ package com.kreitek.pets;
 import com.kreitek.pets.controllers.CatController;
 import com.kreitek.pets.controllers.ControllerFactory;
 import com.kreitek.pets.controllers.DogController;
+import main.java.com.kreitek.pets.Controller;
+import main.java.com.kreitek.pets.Logger;
+import main.java.com.kreitek.pets.controllers.ControllerFactory;
+import main.java.com.kreitek.pets.controllers.DogController;
+
 import java.util.Scanner;
 
 public class PetApp {
 
     // TODO Logger declaration
-
+    Logger logger =new Logger();
     public static void main (String[] args) {
         ControllerFactory controllerFactory = new ControllerFactory();
         boolean end = false;
@@ -34,7 +39,7 @@ public class PetApp {
                                 response = catController.executeGet();
                                 break;
                             default:
-                                throw new BadCommandException();
+                                throw new com.kreitek.pets.BadCommandException();
                         }
                         System.out.println(response);
                         break;
@@ -46,22 +51,22 @@ public class PetApp {
                                 response = dogController.executePut(params[1], params[2], params[3]);
                                 break;
                             case "cat":
-                                Controller catController = new CatController();
+                                Controller catController = new pets.src.main.java.com.kreitek.pets.controllers.CatController();
                                 response = catController.executePut(params[1], params[2], params[3]);
                                 break;
                             default:
-                                throw new BadCommandException();
+                                throw new com.kreitek.pets.BadCommandException();
                         }
                         System.out.println(response);
                 }
-            } catch (BadCommandException e) {
+            } catch (com.kreitek.pets.BadCommandException e) {
                 System.out.println("Bad command error");
             }
         }
         System.out.println("Pet app has been ended"); // TODO Logger
     }
 
-    private static String getGetParam(String[] commandArgs) throws BadCommandException {
+    private static String getGetParam(String[] commandArgs) throws com.kreitek.pets.BadCommandException {
         if (commandArgs.length == 2) {
             return commandArgs[1];
         } else {

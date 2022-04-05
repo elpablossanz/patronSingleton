@@ -1,4 +1,4 @@
-package com.kreitek.pets.controllers;
+package main.java.com.kreitek.pets.controllers;
 
 import com.kreitek.pets.Controller;
 
